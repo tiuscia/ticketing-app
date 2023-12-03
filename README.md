@@ -1,6 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+!!!!in progress!!!!
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and inspired by https://github.com/ClarityCoders/Ticket-Tutorial-App
+
+In this version I revisited the code and made some changes:
+
+- I added TypeScript
+- I changed the file structure
 
 ## Getting Started
+
+# 1
 
 First, run the development server:
 
@@ -14,9 +23,16 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 2
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+add your MongoDB connection string to the .env.local file
+
+example:
+
+```
+# Copy and paste it from your MongoDB Atlas dashboard (Deployment -> Database -> Connect -> Drivers -> Node.js)
+MONGODB_URI = mongodb+srv://<user>:<password>@cluster0.bdphudh.mongodb.net/<db name>
+```
 
 ## Learn More
 
