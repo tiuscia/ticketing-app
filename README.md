@@ -9,9 +9,17 @@ In this version I revisited the code and made some changes:
 
 ## Getting Started
 
-# 1
+### 1 - add MongoDB URI
+add your MongoDB connection string to the .env.local file
 
-First, run the development server:
+example:
+
+```
+# Copy and paste it from your MongoDB Atlas dashboard (Deployment -> Database -> Connect -> Drivers -> Node.js)
+MONGODB_URI = mongodb+srv://<user>:<password>@cluster0.bdphudh.mongodb.net/<db name>
+```
+
+### 2 - First, run the development server:
 
 ```bash
 npm run dev
@@ -23,16 +31,6 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-# 2
-
-add your MongoDB connection string to the .env.local file
-
-example:
-
-```
-# Copy and paste it from your MongoDB Atlas dashboard (Deployment -> Database -> Connect -> Drivers -> Node.js)
-MONGODB_URI = mongodb+srv://<user>:<password>@cluster0.bdphudh.mongodb.net/<db name>
-```
 
 ## Learn More
 
