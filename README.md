@@ -16,7 +16,7 @@ add your MongoDB connection string to the .env.local file
 example:
 
 ```
-# Copy and paste it from your MongoDB Atlas dashboard (Deployment -> Database -> Connect -> Drivers -> Node.js)
+// Copy and paste it from your MongoDB Atlas dashboard (Deployment -> Database -> Connect -> Drivers -> Node.js)
 MONGODB_URI = mongodb+srv://<user>:<password>@cluster0.bdphudh.mongodb.net/<db name>
 ```
 

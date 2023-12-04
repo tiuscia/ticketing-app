@@ -1,8 +1,15 @@
 import mongoose, { Schema, model } from "mongoose"
 import { TicketSchemaType } from "../(types)"
 
-mongoose.connect(process.env.MONGODB_URI as string)
+mongoose.connect(process.env.MONGODB_URI as string).catch((err) => {
+  console.log("Mongoose initial connection error: " + err)
+})
 // mongoose.Promise = global.Promise as typeof Promise
+
+// error after initial connection
+mongoose.connection.on("error", (err) => {
+  console.log("Mongoose connection error: " + err)
+})
 
 // Create a Schema corresponding to the document interface
 const ticketSchema = new Schema<TicketSchemaType>(
@@ -20,7 +27,7 @@ const ticketSchema = new Schema<TicketSchemaType>(
   }
 )
 
-// Create a Model.
+// Create a Model
 const Ticket =
   mongoose.models.Ticket || model<TicketSchemaType>("Ticket", ticketSchema)
 

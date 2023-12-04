@@ -1,10 +1,11 @@
 "use client"
 
 import { TicketSchemaType } from "@/app/(types)"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import React, { ChangeEvent, useState } from "react"
 
 const TicketForm = () => {
+  const router = useRouter()
   const defaultTicketData: TicketSchemaType = {
     title: "",
     description: "",
@@ -22,7 +23,7 @@ const TicketForm = () => {
       | ChangeEvent<HTMLInputElement>
       | ChangeEvent<HTMLTextAreaElement>
       | ChangeEvent<HTMLSelectElement>
-  ) => {
+  ): void => {
     const value = e.target.value
     const name = e.target.name
 
@@ -34,8 +35,25 @@ const TicketForm = () => {
     })
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     console.log("submitting form data")
+    const res = await fetch("/api/Tickets", {
+      method: "POST",
+      body: JSON.stringify({ formData }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+
+    console.log("res", res)
+
+    if (!res.ok) {
+      throw new Error("Failed to create ticket")
+    }
+
+    router.refresh()
+    router.push("/")
   }
 
   return (
