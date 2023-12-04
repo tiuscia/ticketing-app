@@ -1,14 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFire } from "@fortawesome/free-solid-svg-icons"
 
-const PriorityDisplay = () => {
+type PriorityDisplayProps = {
+  priority: number
+}
+
+const PriorityDisplay = ({ priority }: PriorityDisplayProps) => {
   return (
     <div className="flex justify-start align-baseline">
-      <FontAwesomeIcon icon={faFire} className="text-red-400" />
-      <FontAwesomeIcon icon={faFire} className="text-red-400" />
-      <FontAwesomeIcon icon={faFire} className="text-red-400" />
-      <FontAwesomeIcon icon={faFire} className="text-red-400" />
-      <FontAwesomeIcon icon={faFire} className="text-red-400" />
+      {[...Array(5)].map((_, index) => (
+        <FontAwesomeIcon
+          key={index}
+          icon={faFire}
+          className={`pr-1 ${
+            priority > index ? "text-red-400" : "text-slate-400"
+          }`}
+        />
+      ))}
     </div>
   )
 }

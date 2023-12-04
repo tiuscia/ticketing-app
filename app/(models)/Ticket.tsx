@@ -4,7 +4,6 @@ import { TicketSchemaType } from "../(types)"
 mongoose.connect(process.env.MONGODB_URI as string).catch((err) => {
   console.log("Mongoose initial connection error: " + err)
 })
-// mongoose.Promise = global.Promise as typeof Promise
 
 // error after initial connection
 mongoose.connection.on("error", (err) => {
