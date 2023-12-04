@@ -5,7 +5,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 In this version I revisited the code and made some changes:
 
 - I added TypeScript
-- I changed the file structure
+- file structure
+- PriorityDisplay Component
 
 ## Getting Started
 

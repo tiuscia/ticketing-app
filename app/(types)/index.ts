@@ -22,3 +22,12 @@ export type TicketCardProp = {
   __v: number
   // key: React.Key
 }
+
+export type FormatTimestampOptionType = {
+  year: string
+  month: string
+  day: string
+  hour: string
+  minute: string
+  hour12: boolean
+}

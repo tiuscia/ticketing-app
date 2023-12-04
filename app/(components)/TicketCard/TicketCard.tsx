@@ -1,5 +1,4 @@
 // components
-import Ticket from "@/app/(models)/Ticket"
 import DeleteBlock from "./DeleteBlock/DeleteBlock"
 import PriorityDisplay from "./PriorityDisplay/PriorityDisplay"
 import ProgressDisplay from "./ProgressDisplay/ProgressDisplay"
@@ -7,15 +6,34 @@ import StatusDisplay from "./StatusDisplay/StatusDisplay"
 import React from "react"
 
 // type
-import { TicketCardProp } from "../../(types)"
+import { TicketCardProp, FormatTimestampOptionType } from "../../(types)"
 
 const TicketCard = (ticket: TicketCardProp) => {
+  function formatTimestamp(timestamp: string) {
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    }
+
+    const date = new Date(timestamp)
+    const formattedDate: string = date.toLocaleString(
+      "en-US",
+      options as Intl.DateTimeFormatOptions
+    )
+
+    return formattedDate
+  }
+
   return (
     <div className="ticket-card flex flex-col hover:bg-card-hover bg-card rounded-md shadow-lg p-3 m-2">
       <div className="flex mb-3">
         <PriorityDisplay priority={ticket.priority as number} />
         <div className="ml-auto">
-          <DeleteBlock />
+          <DeleteBlock id={ticket._id} />
         </div>
       </div>
       <h4>{ticket.title}</h4>
@@ -24,7 +42,7 @@ const TicketCard = (ticket: TicketCardProp) => {
       <div className="flex-grow"></div>
       <div className="flex mt-2">
         <div className="flex flex-col min-w-[200px] max-w-[80%]">
-          <p className="text-xs my-1">{ticket.createdAt}</p>
+          <p className="text-xs my-1">{formatTimestamp(ticket.createdAt)}</p>
           <ProgressDisplay progress={ticket.progress} />
         </div>
         <div className="ml-auto flex items-end">
