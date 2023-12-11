@@ -2,7 +2,7 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faX } from "@fortawesome/free-solid-svg-icons"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 
 type DeleteBlockProp = {
   id: string
@@ -21,6 +21,7 @@ const DeleteBlock = ({ id }: DeleteBlockProp) => {
 
       if (res.ok) {
         console.log("DELETE: Promise resolved and HTTP status is successful")
+        router.refresh()
       } else {
         // Custom message for failed HTTP codes
         if (res.status === 404) throw new Error("404, Not found")
