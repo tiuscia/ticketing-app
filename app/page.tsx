@@ -4,8 +4,9 @@ import { TicketCardProp } from "./(types)"
 
 const getTickets = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/Tickets")
-    cache: "no-cache"
+    const res = await fetch("http://localhost:3000/api/Tickets", {
+      cache: "no-store",
+    })
     return res.json()
   } catch (error) {
     console.log("Failed to get ticket (TicketCard)", error)
