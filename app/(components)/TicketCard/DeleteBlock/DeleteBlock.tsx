@@ -9,8 +9,8 @@ type DeleteBlockProp = {
 }
 
 const DeleteBlock = ({ id }: DeleteBlockProp) => {
+  const router = useRouter()
   const deteleTicket = async (id: string) => {
-    const router = useRouter()
     try {
       const res: Response = await fetch(
         `http://localhost:3000/api/Tickets/${id}`,

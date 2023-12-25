@@ -1,25 +1,25 @@
 export type TicketSchemaType = {
-  title: String
-  description: String
-  category: String
+  title: string
+  description: string
+  category: string
   priority: Number
   progress: Number
-  status: String
-  active: Boolean
+  status: string
+  active: boolean
 }
 
 export type TicketCardProp = {
   _id: string
-  title: string
-  description: string
-  category: string
-  priority: number
-  progress: number
-  status: string
-  active: boolean
-  createdAt: string
-  updatedAt: string
-  __v: number
+  title?: string
+  description?: string
+  category?: string
+  priority?: number
+  progress?: number
+  status?: string
+  active?: boolean
+  createdAt?: string
+  updatedAt?: string
+  __v?: number
   // key: React.Key
 }
 

@@ -1,10 +1,14 @@
 "use client"
 
-import { TicketSchemaType } from "@/app/(types)"
 import { useRouter } from "next/navigation"
 import React, { ChangeEvent, useState } from "react"
 
-const TicketForm = () => {
+// types
+import { TicketCardProp, TicketSchemaType } from "@/app/(types)"
+export type TicketFormProp = TicketCardProp
+
+const TicketForm = (ticket: TicketFormProp) => {
+  const isEditMode = ticket._id !== "new"
   const router = useRouter()
   const defaultTicketData: TicketSchemaType = {
     title: "",
@@ -14,6 +18,15 @@ const TicketForm = () => {
     status: "not started",
     category: "bug",
     active: true,
+  }
+
+  if (isEditMode) {
+    defaultTicketData.title = ticket.title as string
+    defaultTicketData.description = ticket.description as string
+    defaultTicketData.priority = ticket.priority as number
+    defaultTicketData.progress = ticket.progress as number
+    defaultTicketData.category = ticket.category as string
+    defaultTicketData.status = ticket.status as string
   }
 
   const [formData, setFormData] = useState<TicketSchemaType>(defaultTicketData)

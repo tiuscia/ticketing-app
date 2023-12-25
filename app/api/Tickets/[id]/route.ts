@@ -9,6 +9,18 @@ type paramsType = {
   params: ParamsIDType
 }
 
+export async function GET(req: Request, { params }: paramsType) {
+  try {
+    const { id } = params
+
+    const ticket = await Ticket.findOne({ _id: id })
+    return NextResponse.json({ ticket }, { status: 200 })
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({ message: "Error", error }, { status: 500 })
+  }
+}
+
 export async function DELETE(req: Request, { params }: paramsType) {
   try {
     const { id } = params
