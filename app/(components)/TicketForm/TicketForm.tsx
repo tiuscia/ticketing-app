@@ -51,20 +51,37 @@ const TicketForm = (ticket: TicketFormProp) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log("submitting form data")
-    const res = await fetch("/api/Tickets", {
-      method: "POST",
-      body: JSON.stringify({ formData }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    if (isEditMode) {
+      // updating the ticket
+      const res = await fetch(`/api/Tickets/${ticket._id}`, {
+        method: "PUT",
+        body: JSON.stringify({ formData }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
 
-    console.log("res", res)
+      console.log("res", res)
 
-    if (!res.ok) {
-      throw new Error("Failed to create ticket")
+      if (!res.ok) {
+        throw new Error("Failed to update ticket")
+      }
+    } else {
+      // creating new ticket
+      const res = await fetch("/api/Tickets", {
+        method: "POST",
+        body: JSON.stringify({ formData }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+
+      console.log("res", res)
+
+      if (!res.ok) {
+        throw new Error("Failed to create ticket")
+      }
     }
-
     router.refresh()
     router.push("/")
   }
@@ -173,7 +190,11 @@ const TicketForm = (ticket: TicketFormProp) => {
           <option value="started">Started</option>
           <option value="done">Done</option>
         </select>
-        <input type="submit" className="btn" value={"Create Ticket"} />
+        <input
+          type="submit"
+          className="btn"
+          value={isEditMode ? "Edit ticket" : "Create Ticket"}
+        />
       </form>
     </div>
   )
