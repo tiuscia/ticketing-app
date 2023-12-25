@@ -76,7 +76,7 @@ const TicketForm = (ticket: TicketFormProp) => {
         method="post"
         onSubmit={handleSubmit}
       >
-        <h3>Create a ticket</h3>
+        <h3>{isEditMode ? "Update" : "Create a"} ticket</h3>
         <label>Title</label>
         <input
           type="text"

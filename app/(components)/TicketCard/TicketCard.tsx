@@ -5,6 +5,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons"
 
 // components
 import DeleteBlock from "./DeleteBlock/DeleteBlock"
+import EditBlock from "./EditBlock/EditBlock"
 import PriorityDisplay from "./PriorityDisplay/PriorityDisplay"
 import ProgressDisplay from "./ProgressDisplay/ProgressDisplay"
 import StatusDisplay from "./StatusDisplay/StatusDisplay"
@@ -38,7 +39,7 @@ const TicketCard = (ticket: TicketCardProp) => {
       <div className="flex mb-3">
         <PriorityDisplay priority={ticket.priority as number} />
         <div className="ml-auto">
-          <EditBlock />
+          <EditBlock id={ticket._id} />
           <DeleteBlock id={ticket._id} />
         </div>
       </div>
