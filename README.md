@@ -1,12 +1,13 @@
-!!!!in progress!!!!
++++ Ticket Tutorial App with TypeScript +++
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and inspired by https://github.com/ClarityCoders/Ticket-Tutorial-App
 
 In this version I revisited the code and made some changes:
 
 - I added TypeScript
-- file structure
+- Files structure
 - PriorityDisplay Component
+- Added EditBlock Component
 
 ## Getting Started
 
@@ -16,7 +17,7 @@ add your MongoDB connection string to the .env.local file
 
 example:
 
-```
+```javascript
 // Copy and paste it from your MongoDB Atlas dashboard (Deployment -> Database -> Connect -> Drivers -> Node.js)
 MONGODB_URI = mongodb+srv://<user>:<password>@cluster0.bdphudh.mongodb.net/<db name>
 ```
@@ -35,7 +36,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about this Next.js project, take a look at the following resources:
 
 - [Mongoose](https://mongoosejs.com/docs/) - learn about Mongoose
 - [Next.js with Mongoose](https://www.mongodb.com/developer/how-to/nextjs-with-mongoose/) - learn how to use MongoDB with Next.js
